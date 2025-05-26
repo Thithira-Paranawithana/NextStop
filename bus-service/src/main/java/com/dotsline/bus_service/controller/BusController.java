@@ -1,6 +1,7 @@
 package com.dotsline.bus_service.controller;
 
 import com.dotsline.bus_service.model.Bus;
+import com.dotsline.bus_service.model.Route;
 import com.dotsline.bus_service.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,8 @@ public class BusController {
 
     @PostMapping
     public ResponseEntity<Bus> createBus(@RequestBody Bus bus) {
-        return ResponseEntity.ok(busService.createBus(bus));
+        Bus saveBus = busService.createBus(bus);
+        return ResponseEntity.ok(saveBus);
     }
 
     @GetMapping("getAllBuses")
