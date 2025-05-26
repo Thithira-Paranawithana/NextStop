@@ -16,10 +16,9 @@ public class BusController {
     @Autowired
     private BusService busService;
 
-    @PostMapping
+    @PostMapping("createBus")
     public ResponseEntity<Bus> createBus(@RequestBody Bus bus) {
-        Bus saveBus = busService.createBus(bus);
-        return ResponseEntity.ok(saveBus);
+        return ResponseEntity.ok(busService.createBus(bus));
     }
 
     @GetMapping("getAllBuses")

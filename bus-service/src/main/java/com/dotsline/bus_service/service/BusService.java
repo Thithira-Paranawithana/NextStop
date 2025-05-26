@@ -14,8 +14,14 @@ public class BusService {
     @Autowired
     private BusRepository busRepository;
 
+    @Autowired
+    private SeatService seatService;
+
     public Bus createBus(Bus bus) {
-        return busRepository.save(bus);
+        Bus savedBus = busRepository.save(bus);
+        seatService.createSeatsForBus(savedBus); // Create seats after saving
+        return savedBus;
+//        return busRepository.save(bus);
     }
 
     public List<Bus> getAllBuses() {
