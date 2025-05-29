@@ -40,4 +40,9 @@ public class SeatService {
             return seatRepository.save(existingSeat);
         });
     }
+
+    public Optional<Seat> getSeatById(Integer id) {
+        return seatRepository.findById(id);
+    }
+
 }
