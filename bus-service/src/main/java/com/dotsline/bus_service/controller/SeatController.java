@@ -26,4 +26,12 @@ public class SeatController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/seats/{id}")
+    public ResponseEntity<Seat> getSeatById(@PathVariable Integer id) {
+        return seatService.getSeatById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
