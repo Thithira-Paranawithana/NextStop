@@ -22,7 +22,7 @@ public class SeatService {
         for (int i = 1; i <= totalSeats; i++) {
             Seat seat = new Seat();
             seat.setSeatNumber("S" + i);
-            seat.setIsReserved(false);
+//            seat.setIsReserved(false);
             seat.setBus(bus);
             seats.add(seat);
         }
@@ -36,7 +36,7 @@ public class SeatService {
     public Optional<Seat> updateSeat(Integer id, Seat updatedSeat) {
         return seatRepository.findById(id).map(existingSeat -> {
             existingSeat.setSeatNumber(updatedSeat.getSeatNumber());
-            existingSeat.setIsReserved(updatedSeat.getIsReserved());
+//            existingSeat.setIsReserved(updatedSeat.getIsReserved());
             return seatRepository.save(existingSeat);
         });
     }

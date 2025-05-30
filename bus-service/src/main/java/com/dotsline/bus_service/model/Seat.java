@@ -11,9 +11,9 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String seatNumber; // e.g., S1, S2
+    private String seatNumber; // S1, S2
 
-    private Boolean isReserved = false;
+//    private Boolean isReserved = false;
 
     @ManyToOne
     @JoinColumn(name = "bus_id")

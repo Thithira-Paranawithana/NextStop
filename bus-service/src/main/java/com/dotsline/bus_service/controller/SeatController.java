@@ -20,12 +20,6 @@ public class SeatController {
         return ResponseEntity.ok(seatService.getSeatsByBusId(busId));
     }
 
-    @PutMapping("updateSeat/{id}")
-    public ResponseEntity<Seat> updateSeat(@PathVariable Integer id, @RequestBody Seat updatedSeat) {
-        return seatService.updateSeat(id, updatedSeat)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
 
     @GetMapping("/seats/{id}")
     public ResponseEntity<Seat> getSeatById(@PathVariable Integer id) {
