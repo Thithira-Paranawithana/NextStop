@@ -6,6 +6,7 @@ import com.dotsline.bus_service.model.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,14 +16,17 @@ public class BusRouteScheduleService {
     @Autowired
     private BusRouteScheduleRepository scheduleRepository;
 
+    // add a schedule
     public BusRouteSchedule addSchedule(BusRouteSchedule schedule) {
         return scheduleRepository.save(schedule);
     }
 
+    // get all the schedules stored
     public List<BusRouteSchedule> getAllSchedules() {
         return scheduleRepository.findAll();
     }
 
+    // get a schedule by id
     public Optional<BusRouteSchedule> getScheduleById(Integer id) {
         return scheduleRepository.findById(id);
     }
@@ -31,6 +35,7 @@ public class BusRouteScheduleService {
         scheduleRepository.deleteById(id);
     }
 
+    // Update schedule
     public Optional<BusRouteSchedule> updateSchedule(Integer id, BusRouteSchedule updatedSchedule) {
         return scheduleRepository.findById(id).map(existingSchedule -> {
             existingSchedule.setBus(updatedSchedule.getBus());
@@ -40,6 +45,11 @@ public class BusRouteScheduleService {
             existingSchedule.setFare(updatedSchedule.getFare());
             return scheduleRepository.save(existingSchedule);
         });
+    }
+
+    // get filtered schedules based on source, destination and travel date
+    public List<BusRouteSchedule> getFilteredSchedules(String sourceCity, String destinationCity, LocalDate travelDate) {
+        return scheduleRepository.findSchedulesBySourceDestinationAndDate(sourceCity, destinationCity, travelDate);
     }
 
 

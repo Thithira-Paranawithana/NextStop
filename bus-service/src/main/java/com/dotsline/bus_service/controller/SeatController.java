@@ -15,9 +15,15 @@ public class SeatController {
     @Autowired
     private SeatService seatService;
 
+//    @GetMapping("/bus/{busId}")
+//    public ResponseEntity<List<Seat>> getSeatsByBus(@PathVariable Integer busId) {
+//        return ResponseEntity.ok(seatService.getSeatsByBusId(busId));
+//    }
+
     @GetMapping("/bus/{busId}")
-    public ResponseEntity<List<Seat>> getSeatsByBus(@PathVariable Integer busId) {
-        return ResponseEntity.ok(seatService.getSeatsByBusId(busId));
+    public ResponseEntity<List<Seat>> getSeatsByBusId(@PathVariable Integer busId) {
+        List<Seat> seats = seatService.getSeatsByBusId(busId);
+        return ResponseEntity.ok(seats);
     }
 
 
