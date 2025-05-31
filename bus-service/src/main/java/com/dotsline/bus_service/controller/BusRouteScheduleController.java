@@ -4,9 +4,11 @@ import com.dotsline.bus_service.model.BusRouteSchedule;
 import com.dotsline.bus_service.model.Route;
 import com.dotsline.bus_service.service.BusRouteScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,6 +46,19 @@ public class BusRouteScheduleController {
         return scheduleService.updateSchedule(id, updatedSchedule)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    // get filtered schedules based on source, destination and travel date
+    @GetMapping("/filter")
+    public ResponseEntity<List<BusRouteSchedule>> filterSchedules(
+            @RequestParam String sourceCity,
+            @RequestParam String destinationCity,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate travelDate) {
+
+        List<BusRouteSchedule> schedules = scheduleService
+                .getFilteredSchedules(sourceCity, destinationCity, travelDate);
+
+        return ResponseEntity.ok(schedules);
     }
 
 
