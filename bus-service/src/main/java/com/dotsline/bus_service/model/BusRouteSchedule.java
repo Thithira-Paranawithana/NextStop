@@ -23,6 +23,7 @@ public class BusRouteSchedule {
 
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
+    private String status;
 
     private Double fare;
 }

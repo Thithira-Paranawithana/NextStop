@@ -18,4 +18,6 @@ public class Bus {
     private String type;
     private Integer totalSeats;
     private String operatorName;
+    private String status;
+
 }

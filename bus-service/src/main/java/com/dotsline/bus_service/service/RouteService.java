@@ -39,6 +39,7 @@ public class RouteService {
         existingRoute.setDestinationCity(updatedRoute.getDestinationCity());
         existingRoute.setDistanceKm(updatedRoute.getDistanceKm());
         existingRoute.setDuration(updatedRoute.getDuration());
+        existingRoute.setStatus(updatedRoute.getStatus());
 
         return routeRepository.save(existingRoute);
     }
