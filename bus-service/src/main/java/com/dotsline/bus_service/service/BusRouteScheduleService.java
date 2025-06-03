@@ -43,6 +43,7 @@ public class BusRouteScheduleService {
             existingSchedule.setDepartureTime(updatedSchedule.getDepartureTime());
             existingSchedule.setArrivalTime(updatedSchedule.getArrivalTime());
             existingSchedule.setFare(updatedSchedule.getFare());
+            existingSchedule.setStatus(updatedSchedule.getStatus());
             return scheduleRepository.save(existingSchedule);
         });
     }

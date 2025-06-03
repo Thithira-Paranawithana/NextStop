@@ -18,4 +18,6 @@ public class Route {
     private String destinationCity;
     private Double distanceKm;
     private String duration;
+    private String status;
+
 }

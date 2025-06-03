@@ -40,6 +40,7 @@ public class BusService {
         existingBus.setType(updatedBus.getType());
         existingBus.setTotalSeats(updatedBus.getTotalSeats());
         existingBus.setOperatorName(updatedBus.getOperatorName());
+        existingBus.setStatus(updatedBus.getStatus());
 
         return busRepository.save(existingBus);
     }
