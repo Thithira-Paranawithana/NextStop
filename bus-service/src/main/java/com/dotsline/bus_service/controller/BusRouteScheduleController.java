@@ -57,7 +57,7 @@ public class BusRouteScheduleController {
 
         List<BusRouteSchedule> schedules = scheduleService
                 .getFilteredSchedules(sourceCity, destinationCity, travelDate);
-
+    
         return ResponseEntity.ok(schedules);
     }
 

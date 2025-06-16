@@ -11,8 +11,8 @@ import java.util.List;
 public interface BusRouteScheduleRepository extends JpaRepository<BusRouteSchedule, Integer> {
     @Query("SELECT s FROM BusRouteSchedule s " +
             "WHERE s.route.sourceCity = :sourceCity " +
-            "AND s.route.destinationCity = :destinationCity " +
-            "AND DATE(s.departureTime) = :travelDate")
+            "AND s.route.destinationCity = :destinationCity")
+//            "AND DATE(s.departureTime) = :travelDate")
     List<BusRouteSchedule> findSchedulesBySourceDestinationAndDate(
             @Param("sourceCity") String sourceCity,
             @Param("destinationCity") String destinationCity,

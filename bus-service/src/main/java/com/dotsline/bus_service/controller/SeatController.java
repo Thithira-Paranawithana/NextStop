@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("seats")
@@ -14,11 +16,6 @@ public class SeatController {
 
     @Autowired
     private SeatService seatService;
-
-//    @GetMapping("/bus/{busId}")
-//    public ResponseEntity<List<Seat>> getSeatsByBus(@PathVariable Integer busId) {
-//        return ResponseEntity.ok(seatService.getSeatsByBusId(busId));
-//    }
 
     @GetMapping("/bus/{busId}")
     public ResponseEntity<List<Seat>> getSeatsByBusId(@PathVariable Integer busId) {
@@ -32,6 +29,19 @@ public class SeatController {
         return seatService.getSeatById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/bus/{busId}/seat/{seatNumber}")
+    public ResponseEntity<Seat> getSeatByBusIdAndSeatNumber(
+            @PathVariable Integer busId,
+            @PathVariable String seatNumber) {
+
+        Optional<Seat> seat = seatService.findByBusIdAndSeatNumber(busId, seatNumber);
+        if (seat.isPresent()) {
+            return ResponseEntity.ok(seat.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

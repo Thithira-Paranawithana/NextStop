@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SeatService {
@@ -43,6 +45,10 @@ public class SeatService {
 
     public Optional<Seat> getSeatById(Integer id) {
         return seatRepository.findById(id);
+    }
+
+    public Optional<Seat> findByBusIdAndSeatNumber(Integer busId, String seatNumber) {
+        return seatRepository.findByBusIdAndSeatNumber(busId, seatNumber);
     }
 
 }
